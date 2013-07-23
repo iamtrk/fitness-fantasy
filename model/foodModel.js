@@ -3,7 +3,13 @@
 var mongoose = require('mongoose');
 var db = mongoose.connection;
 var messageSchema = mongoose.Schema({
-        manufacturer:String
+        id:Number,
+        description:String,
+		tags:[String],
+		manufacturer:String,
+		group:String,
+		portions:[{amount:Number,unit:String,grams:Number}],
+		nutrients:[{value:Number,units:String,description:String,group:String}]		
 	});
 exports.fudlist = function(manufacture, callback){
 

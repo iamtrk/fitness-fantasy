@@ -1,4 +1,4 @@
-
+var util = require('util')
 var foodModel = require('../model/foodModel')
 
  exports.foodsByManufacturer = function(req,res){
@@ -7,7 +7,11 @@ var foodModel = require('../model/foodModel')
   if(err){
   res.send("Error in Extracting the data from DB");
   }
-  console.log("Length of thr extracted data size is "+teams.length);
-  res.send(teams[1].get("nutrients"));
+  var x = teams[1].get("nutrients")
+  var z= JSON.stringify(x[1])
+  var y = JSON.parse(z);
+  console.log("Nutrient is is "+x);
+  res.render('food', { title: req.params.manufacturer, nutrient: y.description});
+  
   });
  }
