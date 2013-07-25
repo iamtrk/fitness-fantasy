@@ -7,11 +7,26 @@ var foodModel = require('../model/foodModel')
   if(err){
   res.send("Error in Extracting the data from DB");
   }
-  var x = teams[1].get("nutrients")
-  var z= JSON.stringify(x[1])
+  var z= JSON.stringify(teams[1])
   var y = JSON.parse(z);
-  console.log("Nutrient is is "+x);
+  console.log("Nutrient is is "+y.id);
   res.render('food', { title: req.params.manufacturer, nutrient: y.description});
-  
   });
+ }
+ exports.pickRandomFood= function(req,res){
+ foodModel.allFoodIds(function(err,idList){
+ if(err){
+ console.log("DB Exception hehe");}
+ console.log(idList[Math.floor(Math.random()*idList.length)].id)
+ foodModel.foodById(idList[Math.floor(Math.random()*idList.length)].id, function(err,food){
+ if(err) {
+ res.send("Error Extracting data from DB");
+ }
+ var x = JSON.stringify(food)
+ var w = JSON.parse(x)
+ console.log()
+ res.render('food',{title:w[0].description,nutrient:w[0].nutrients[2].description }) 
+ });
+ });
+ 
  }
