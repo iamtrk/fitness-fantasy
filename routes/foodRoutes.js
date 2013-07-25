@@ -17,15 +17,20 @@ var foodModel = require('../model/foodModel')
  foodModel.allFoodIds(function(err,idList){
  if(err){
  console.log("DB Exception hehe");}
- console.log(idList[Math.floor(Math.random()*idList.length)].id)
- foodModel.foodById(idList[Math.floor(Math.random()*idList.length)].id, function(err,food){
+ var randFudId = idList[Math.floor(Math.random()*idList.length)].id
+ console.log(randFudId)
+ foodModel.foodById(randFudId, function(err,food){
  if(err) {
  res.send("Error Extracting data from DB");
  }
  var x = JSON.stringify(food)
  var w = JSON.parse(x)
- console.log()
- res.render('food',{title:w[0].description,nutrient:w[0].nutrients[2].description }) 
+ if(w[0].portions.length==0){
+ res.render('error',{title:w[0].description})}
+ else {
+ var rand = Math.floor(Math.random()*w[0].nutrients.length);
+ res.render('food',{title:w[0].description,nutrient:w[0].nutrients[rand].description ,value:w[0].nutrients[rand].value, units:w[0].nutrients[rand].units,grams:w[0].portions[0].grams, unit:w[0].portions[0].unit  }) 
+ }
  });
  });
  
