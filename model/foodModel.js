@@ -21,7 +21,8 @@ db.once('open', function() {
    if(err){
     onErr(err,callback);
    }else{
-    mongoose.connection.close();
+    //mongoose.connection.close();
+	mongoose.disconnect()
     console.log(teams.length);
 	callback("",teams)
     }
@@ -37,7 +38,8 @@ db.once('open', function() {
    if(err){
     onErr(err,callback);
    }else{
-    mongoose.connection.close();
+    //mongoose.connection.close();
+	mongoose.disconnect()
     console.log(teams.length);
 	callback("",teams)
     }
@@ -53,7 +55,8 @@ db.once('open', function() {
    if(err){
     onErr(err,callback);
    }else{
-    mongoose.connection.close();
+    //mongoose.connection.close();
+	mongoose.disconnect()
     callback("",food)
     }
 })
