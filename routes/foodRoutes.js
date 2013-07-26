@@ -82,7 +82,7 @@ name:"undefined",
 description:"undefined",
 value:"undefined",
 units:"undefined"}
-console.log(Sugars)
+
 var aminos = AminoAcids.length!=0?AminoAcids[0]:nul
 var sugar = Sugars.length!=0?Sugars[0]:nul
 var vitamin = Vitamins.length!=0?Vitamins[0]:nul
@@ -90,8 +90,6 @@ var element = Elements.length!=0?Elements[0]:nul
 var energy = Energy.length!=0?Energy[0]:nul
 var other = Other.length!=0?Other[0]:nul
 var compose = Composition.length!=0?Composition[0]:nul
-
-console.log(sugar)
 
  if(w.portions.length==0){
  res.render('error',{title:w.description})}

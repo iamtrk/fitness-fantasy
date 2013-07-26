@@ -2,6 +2,7 @@
 
 var mongoose = require('mongoose');
 var db = mongoose.connection;
+//var db = mongoose.createConnection('mongodb://localhost/enron');
 var messageSchema = mongoose.Schema({
         id:Number,
         description:String,
