@@ -24,12 +24,90 @@ var foodModel = require('../model/foodModel')
  res.send("Error Extracting data from DB");
  }
  var x = JSON.stringify(food)
- var w = JSON.parse(x)
- if(w[0].portions.length==0){
- res.render('error',{title:w[0].description})}
+ var w = JSON.parse(x)[0]
+  
+ var Sugars = []
+ var AminoAcids = []
+ var Vitamins = []
+ var Elements = []
+ var Energy = []
+ var Other = []
+ var Composition = []
+ 
+ for(i in w.nutrients){
+ 
+    switch(w.nutrients[i].group){
+	case "Elements" :
+	     Elements.push(w.nutrients[i]);
+		 break;
+    case "Amino Acids" :
+	     AminoAcids.push(w.nutrients[i]);
+		 break;
+    case "Vitamins" :
+	     Vitamins.push(w.nutrients[i]);
+		 break;
+	case "Energy" :
+	     Energy.push(w.nutrients[i]);
+		 break;
+    case "Other" :
+	     Other.push(w.nutrients[i]);
+		 break;
+	case "Composition" :
+	     Composition.push(w.nutrients[i]);
+		 break;
+    case "Sugars" :
+	     Sugars.push(w.nutrients[i]);
+		 break;		 
+	
+	}
+   }
+ 
+ function compare(a,b) {
+  if (a.value < b.value)
+     return 1;
+  if (a.value > b.value)
+    return -1;
+  return 0;
+}
+Sugars.sort(compare);
+AminoAcids.sort(compare);
+Vitamins.sort(compare);
+Elements.sort(compare);
+Energy.sort(compare);
+Other.sort(compare);
+Composition.sort(compare);
+
+var nul = {
+name:"undefined",
+description:"undefined",
+value:"undefined",
+units:"undefined"}
+console.log(Sugars)
+var aminos = AminoAcids.length!=0?AminoAcids[0]:nul
+var sugar = Sugars.length!=0?Sugars[0]:nul
+var vitamin = Vitamins.length!=0?Vitamins[0]:nul
+var element = Elements.length!=0?Elements[0]:nul
+var energy = Energy.length!=0?Energy[0]:nul
+var other = Other.length!=0?Other[0]:nul
+var compose = Composition.length!=0?Composition[0]:nul
+
+console.log(sugar)
+
+ if(w.portions.length==0){
+ res.render('error',{title:w.description})}
  else {
- var rand = Math.floor(Math.random()*w[0].nutrients.length);
- res.render('food',{title:w[0].description,nutrient:w[0].nutrients[rand].description ,value:w[0].nutrients[rand].value, units:w[0].nutrients[rand].units,grams:w[0].portions[0].grams, unit:w[0].portions[0].unit  }) 
+ var rand = Math.floor(Math.random()*w.nutrients.length);
+ res.render
+ ('food',{title:w.description+" "+w.portions[0].grams+" "+w.portions[0].unit,
+ aName:aminos.group,aNutrient:aminos.description ,aValue:aminos.value, aUnits:aminos.units,
+ bName:sugar.group,bNutrient:sugar.description ,bValue:sugar.value, bUnits:sugar.units,
+ cName:vitamin.group,cNutrient:vitamin.description ,cValue:vitamin.value, cUnits:vitamin.units,
+ dName:element.group,dNutrient:element.description ,dValue:element.value, dUnits:element.units,
+ eName:energy.group,eNutrient:energy.description ,eValue:energy.value, eUnits:energy.units,
+ fName:other.group,fNutrient:other.description ,fValue:other.value, fUnits:other.units,
+ gName:compose.group,gNutrient:compose.description ,gValue:compose.value, gUnits:compose.units
+ }) 
+ 
  }
  });
  });

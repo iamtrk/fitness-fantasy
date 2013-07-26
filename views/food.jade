@@ -2,4 +2,19 @@ extends layout
 
 block content
   h1= title
-  p The food is best nutrient for  #{nutrient} with #{value} #{units} per #{unit} or #{grams} grams
+  if aName != undefined
+          p The food's best #{aName} nutrient is  #{aNutrient} with #{aValue} #{aUnits} 
+  if bName != undefined
+          p and best #{bName} nutrient is  #{bNutrient} with #{bValue} #{bUnits} 
+  if cName != undefined	  
+          p and best #{cName} nutrient is  #{cNutrient} with #{cValue} #{cUnits}
+  if dName != undefined
+          p and best #{dName} nutrient is  #{dNutrient} with #{dValue} #{dUnits}
+  if eName != undefined
+          p and best #{eName} nutrient is  #{eNutrient} with #{eValue} #{eUnits}
+  if fName != undefined
+          p and best #{fName} nutrient is  #{fNutrient} with #{fValue} #{fUnits}
+  if gName != undefined
+          p and best #{gName} nutrient is  #{gNutrient} with #{gValue} #{gUnits}
+  
+  

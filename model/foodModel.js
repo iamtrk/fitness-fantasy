@@ -53,8 +53,7 @@ db.once('open', function() {
     onErr(err,callback);
    }else{
     mongoose.connection.close();
-  
-	callback("",food)
+    callback("",food)
     }
 })
 });  };
