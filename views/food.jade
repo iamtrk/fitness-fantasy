@@ -1,7 +1,11 @@
 extends layout
 
+style.h2 {color: #000000;}
+
 block content
-  h1= title
+  
+  h1= "Please refresh to see best nutrients in some other random food"
+  h2= title
   if aName != undefined
           p The food's best #{aName} nutrient is  #{aNutrient} with #{aValue} #{aUnits} 
   if bName != undefined
