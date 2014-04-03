@@ -1,5 +1,4 @@
 
-
 var mongoose = require('mongoose');
 //var db = mongoose.connection;
 //var db = mongoose.createConnection('mongodb://localhost/enron');
@@ -13,7 +12,7 @@ var messageSchema = mongoose.Schema({
 		nutrients:[{value:Number,units:String,description:String,group:String}]		
 	});
 exports.fudlist = function(manufacture, callback){
-var conn = mongoose.createConnection('mongodb://localhost/enron');
+var conn = mongoose.createConnection('mongodb://localhost/jsonFoods');
 //mongoose.connect('mongodb://localhost/enron');
 //db.on('error', console.error.bind(console, 'connection error:'));
 //db.once('open', function() {
