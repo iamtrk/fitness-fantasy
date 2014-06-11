@@ -15,3 +15,5 @@ https://s3-ap-northeast-1.amazonaws.com/ravikumar-ste/twofood.json
 
 Going through the code you can understand how to wire Node.js and MongoDB through mongoose,
 and using Express web framework with Node.js
+
+Application is currently deployed at http://54.187.162.211:8080/random
